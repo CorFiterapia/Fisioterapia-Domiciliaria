@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisioterapia Domiciliaria Profesional</title>
+    <title>Fisioterapia En casa </title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,7 +12,6 @@
             --success: #2a9d8f;
             --light-bg: #f0f4f8;
             --white: #ffffff;
-            --text-muted: #666;
         }
 
         body {
@@ -23,19 +22,20 @@
             line-height: 1.6;
         }
 
+        /* Banner con imagen de doctores */
         header {
-            background: linear-gradient(rgba(0, 119, 182, 0.85), rgba(30, 58, 138, 0.85)), 
-                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200');
+            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.7)), 
+                        url('http://googleusercontent.com/image_collection/image_retrieval/696488589722207992_0');
             background-size: cover;
-            background-position: center;
+            background-position: center 20%;
             color: white;
-            padding: 5rem 1rem;
+            padding: 6rem 1rem;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        header h1 { font-size: 2.5rem; margin: 0; text-transform: uppercase; }
-        header p { font-size: 1.2rem; opacity: 0.9; }
+        header h1 { font-size: 2.5rem; margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        header p { font-size: 1.2rem; opacity: 0.9; font-weight: 300; }
 
         .container {
             max-width: 1100px;
@@ -46,7 +46,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
@@ -54,24 +54,14 @@
         .service-card {
             background: var(--white);
             border-radius: 12px;
-            overflow: hidden;
+            padding: 1.5rem;
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             text-align: center;
+            border-bottom: 4px solid var(--primary);
             transition: transform 0.3s;
         }
 
-        .service-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .service-card h3 {
-            font-size: 1.1rem;
-            padding: 1rem;
-            margin: 0;
-            color: var(--secondary);
-        }
+        .service-card h3 { font-size: 1rem; margin: 0; color: var(--secondary); }
 
         .card {
             background: var(--white);
@@ -79,6 +69,7 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border-top: 6px solid var(--primary);
+            margin-bottom: 2rem;
         }
 
         h2 { color: var(--secondary); text-align: center; margin-bottom: 2rem; }
@@ -124,10 +115,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: 0.3s;
         }
 
-        .plan-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .price { font-size: 1.8rem; font-weight: bold; margin: 1rem 0; color: var(--secondary); }
         
         .btn-pay {
@@ -151,11 +140,12 @@
             text-decoration: none;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 100;
+            z-index: 1000;
         }
 
         @media (max-width: 600px) {
             header h1 { font-size: 1.8rem; }
+            header { padding: 4rem 1rem; }
         }
     </style>
 </head>
@@ -163,28 +153,15 @@
 
 <header>
     <h1>Fisioterapia en Casa</h1>
-    <p>Recuperación integral con estándares clínicos de alta calidad</p>
+    <p>Atención profesional con Fisioterapeutas especialistas</p>
 </header>
 
 <div class="container">
-    
     <div class="services-grid">
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1591438677099-702e0ba76211?auto=format&fit=crop&w=500" alt="Neurológico">
-            <h3>Paciente Neurológico</h3>
-        </div>
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&w=500" alt="Ortopédico">
-            <h3>Lesiones Ortopédicas</h3>
-        </div>
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=500" alt="Cardiovascular">
-            <h3>Paciente Cardiovascular</h3>
-        </div>
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1581578731522-7b7547c6a21f?auto=format&fit=crop&w=500" alt="Adulto Mayor">
-            <h3>Movilidad Adulto Mayor</h3>
-        </div>
+        <div class="service-card"><h3>Paciente Neurológico</h3></div>
+        <div class="service-card"><h3>Lesiones Ortopédicas</h3></div>
+        <div class="service-card"><h3>Paciente Cardiovascular</h3></div>
+        <div class="service-card"><h3>Movilidad Adulto Mayor</h3></div>
     </div>
 
     <div id="registration-card" class="card">
@@ -208,7 +185,7 @@
 
     <div id="payment-section" class="card">
         <h2>Selecciona tu Plan de Fisioterapia</h2>
-        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige la opción que necesitas:</p>
+        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige la opción ideal:</p>
         <div class="plans-grid">
             <div class="plan-card">
                 <div>
@@ -250,7 +227,7 @@
     </div>
 </div>
 
-  <a href="https://wa.me/573054513754?text=Hola,%20deseo%20agendar%20mi%20cita%20de%20fisioterapia" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/573054513754?text=Hola,%20deseo%20agendar%20mi%20cita%20de%20fisioterapia" class="whatsapp-float" target="_blank">
     💬 Agenda tu cita de Fisioterapia  
 </a>
 
