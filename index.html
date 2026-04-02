@@ -44,6 +44,16 @@
             position: relative;
         }
 
+        /* RESALTADO DE ESPECIALIDADES */
+        .specialties-section {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 119, 182, 0.1);
+        }
+
         .section-title {
             text-align: center;
             color: var(--secondary);
@@ -57,7 +67,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 4rem;
         }
 
         .service-card {
@@ -67,9 +76,19 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             text-align: center;
             border-bottom: 4px solid var(--primary);
+            transition: all 0.3s ease;
         }
 
-        .service-card h3 { font-size: 0.95rem; margin: 0; color: var(--secondary); }
+        .service-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary);
+        }
+
+        .service-card:hover h3 {
+            color: white;
+        }
+
+        .service-card h3 { font-size: 0.95rem; margin: 0; color: var(--secondary); transition: color 0.3s; }
 
         .card {
             background: var(--white);
@@ -176,15 +195,15 @@
 </header>
 
 <div class="container">
-    <div class="section-title">Nuestras Especialidades</div>
-    <div class="services-grid">
-        <div class="service-card"><h3>Paciente Neurológico</h3></div>
-        <div class="service-card"><h3>Lesiones Ortopédicas</h3></div>
-        <div class="service-card"><h3>Paciente Cardiovascular</h3></div>
-        <div class="service-card"><h3>Movilidad Adulto Mayor</h3></div>
+    <div class="specialties-section">
+        <div class="section-title">Nuestras Especialidades</div>
+        <div class="services-grid">
+            <div class="service-card"><h3>Paciente Neurológico</h3></div>
+            <div class="service-card"><h3>Lesiones Ortopédicas</h3></div>
+            <div class="service-card"><h3>Paciente Cardiovascular</h3></div>
+            <div class="service-card"><h3>Movilidad Adulto Mayor</h3></div>
+        </div>
     </div>
-
-    <hr style="border: 0; height: 1px; background: #cbd5e0; margin-bottom: 3rem;">
 
     <div id="registration-card" class="card">
         <h2>1. Información del Paciente</h2>
