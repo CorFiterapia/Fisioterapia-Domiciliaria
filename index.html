@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisioterapia En casa</title>
+    <title>Fisioterapia En Casa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -53,7 +53,6 @@
             letter-spacing: 1px;
         }
 
-        /* Sección de Servicios */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -72,7 +71,6 @@
 
         .service-card h3 { font-size: 0.95rem; margin: 0; color: var(--secondary); }
 
-        /* Tarjetas de registro y pago */
         .card {
             background: var(--white);
             padding: 2.5rem;
@@ -86,7 +84,7 @@
 
         .form-group { margin-bottom: 1.5rem; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555; }
-        input, select {
+        input {
             width: 100%;
             padding: 0.9rem;
             border: 2px solid #e1e8ed;
@@ -144,7 +142,6 @@
             display: block;
         }
 
-        /* WhatsApp Flotante con Icono */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -190,18 +187,12 @@
     <hr style="border: 0; height: 1px; background: #cbd5e0; margin-bottom: 3rem;">
 
     <div id="registration-card" class="card">
-        <h2>1. Agendar Cita y Datos</h2>
+        <h2>1. Información del Paciente</h2>
         <form id="appointment-form">
             <div class="form-group">
-                <label>Nombre Completo del Paciente</label>
+                <label>Nombre Completo</label>
                 <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
             </div>
-            
-            <div class="form-group">
-                <label>Selecciona Fecha y Hora de la Cita</label>
-                <input type="datetime-local" id="fecha_cita" required>
-            </div>
-
             <div class="form-group">
                 <label>Dirección de Residencia</label>
                 <input type="text" id="direccion" placeholder="Calle, Número y Barrio" required>
@@ -216,7 +207,7 @@
 
     <div id="payment-section" class="card">
         <h2>Selecciona tu Plan de Fisioterapia</h2>
-        <p style="text-align:center">Hola <strong id="display-name"></strong>, tu cita está pre-agendada. Elige tu plan para confirmar:</p>
+        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige el plan que mejor se adapte a tus necesidades:</p>
         <div class="plans-grid">
             <div class="plan-card">
                 <div>
