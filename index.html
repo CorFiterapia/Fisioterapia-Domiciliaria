@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisioterapia En casa </title>
+    <title>Fisioterapia En casa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,7 +23,6 @@
             line-height: 1.6;
         }
 
-        /* Banner con imagen de doctores */
         header {
             background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.7)), 
                         url('http://googleusercontent.com/image_collection/image_retrieval/696488589722207992_0');
@@ -44,11 +44,21 @@
             position: relative;
         }
 
+        .section-title {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sección de Servicios */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .service-card {
@@ -58,11 +68,11 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             text-align: center;
             border-bottom: 4px solid var(--primary);
-            transition: transform 0.3s;
         }
 
-        .service-card h3 { font-size: 1rem; margin: 0; color: var(--secondary); }
+        .service-card h3 { font-size: 0.95rem; margin: 0; color: var(--secondary); }
 
+        /* Tarjetas de registro y pago */
         .card {
             background: var(--white);
             padding: 2.5rem;
@@ -76,13 +86,14 @@
 
         .form-group { margin-bottom: 1.5rem; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555; }
-        input {
+        input, select {
             width: 100%;
             padding: 0.9rem;
             border: 2px solid #e1e8ed;
             border-radius: 10px;
             font-size: 1rem;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         .btn-main {
@@ -96,9 +107,13 @@
             width: 100%;
             font-weight: 600;
             text-transform: uppercase;
+            transition: 0.3s;
         }
 
+        .btn-main:hover { background-color: #248277; }
+
         #payment-section { display: none; }
+        
         .plans-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -129,19 +144,26 @@
             display: block;
         }
 
+        /* WhatsApp Flotante con Icono */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background-color: #25d366;
             color: white;
-            padding: 15px 25px;
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
         }
+
+        .whatsapp-float:hover { transform: scale(1.05); background-color: #128c7e; }
 
         @media (max-width: 600px) {
             header h1 { font-size: 1.8rem; }
@@ -157,6 +179,7 @@
 </header>
 
 <div class="container">
+    <div class="section-title">Nuestras Especialidades</div>
     <div class="services-grid">
         <div class="service-card"><h3>Paciente Neurológico</h3></div>
         <div class="service-card"><h3>Lesiones Ortopédicas</h3></div>
@@ -164,13 +187,21 @@
         <div class="service-card"><h3>Movilidad Adulto Mayor</h3></div>
     </div>
 
+    <hr style="border: 0; height: 1px; background: #cbd5e0; margin-bottom: 3rem;">
+
     <div id="registration-card" class="card">
-        <h2>1. Datos del Paciente</h2>
+        <h2>1. Agendar Cita y Datos</h2>
         <form id="appointment-form">
             <div class="form-group">
-                <label>Nombre Completo</label>
+                <label>Nombre Completo del Paciente</label>
                 <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
             </div>
+            
+            <div class="form-group">
+                <label>Selecciona Fecha y Hora de la Cita</label>
+                <input type="datetime-local" id="fecha_cita" required>
+            </div>
+
             <div class="form-group">
                 <label>Dirección de Residencia</label>
                 <input type="text" id="direccion" placeholder="Calle, Número y Barrio" required>
@@ -185,7 +216,7 @@
 
     <div id="payment-section" class="card">
         <h2>Selecciona tu Plan de Fisioterapia</h2>
-        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige la opción ideal:</p>
+        <p style="text-align:center">Hola <strong id="display-name"></strong>, tu cita está pre-agendada. Elige tu plan para confirmar:</p>
         <div class="plans-grid">
             <div class="plan-card">
                 <div>
@@ -228,7 +259,8 @@
 </div>
 
 <a href="https://wa.me/573054513754?text=Hola,%20deseo%20agendar%20mi%20cita%20de%20fisioterapia" class="whatsapp-float" target="_blank">
-    💬 Agenda tu cita de Fisioterapia  
+    <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
+    <span>Agenda por WhatsApp</span>
 </a>
 
 <script>
@@ -238,7 +270,7 @@
         document.getElementById('display-name').innerText = nombre;
         document.getElementById('registration-card').style.display = 'none';
         document.getElementById('payment-section').style.display = 'block';
-        window.scrollTo(0, 300);
+        window.scrollTo(0, 400);
     });
 </script>
 
