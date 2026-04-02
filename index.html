@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atención Domiciliaria de Fisioterapia</title>
+    <title>Fisioterapia Domiciliaria Profesional</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2a9d8f;
-            --secondary: #264653;
-            --accent: #e9c46a;
-            --light: #f4f9f8;
+            --primary: #0077b6; /* Azul Salud */
+            --secondary: #1e3a8a;
+            --success: #2a9d8f; /* Verde Sanidad */
+            --light-bg: #f0f4f8;
             --white: #ffffff;
             --text-muted: #666;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
+            background-color: var(--light-bg);
             margin: 0;
-            color: var(--secondary);
+            color: #333;
             line-height: 1.6;
         }
 
+        /* Hero Banner Profesional */
         header {
-            background-color: var(--primary);
+            background: linear-gradient(rgba(0, 119, 182, 0.85), rgba(30, 58, 138, 0.85)), 
+                        url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 3rem 1rem;
+            padding: 5rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+
+        header h1 { font-size: 2.5rem; margin: 0; text-transform: uppercase; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
 
         .container {
             max-width: 1100px;
-            margin: 2rem auto;
+            margin: -3rem auto 3rem;
             padding: 0 1rem;
+            position: relative;
         }
 
-        /* Sección de Servicios */
+        /* Sección de Servicios Clínicos */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -49,13 +57,9 @@
             background: var(--white);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
+            transition: transform 0.3s;
         }
 
         .service-card img {
@@ -66,59 +70,51 @@
 
         .service-card h3 {
             font-size: 1.1rem;
-            padding: 1rem 0.5rem;
+            padding: 1rem;
             margin: 0;
-            color: var(--primary);
+            color: var(--secondary);
         }
 
-        .service-card p {
-            font-size: 0.9rem;
-            padding: 0 1rem 1.5rem;
-            color: var(--text-muted);
-        }
-
-        /* Formulario y Planes */
+        /* Formulario de Registro */
         .card {
             background: var(--white);
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--primary);
         }
 
-        h2 { color: var(--primary); text-align: center; margin-bottom: 2rem; }
+        h2 { color: var(--secondary); text-align: center; margin-bottom: 2rem; }
 
         .form-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555; }
         input {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 0.9rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
             font-size: 1rem;
             box-sizing: border-box;
         }
 
-        button.btn-main {
-            background-color: var(--primary);
+        .btn-main {
+            background-color: var(--success);
             color: white;
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            padding: 1.1rem;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 1.1rem;
             width: 100%;
             font-weight: 600;
-            transition: background 0.3s;
+            text-transform: uppercase;
         }
 
-        button.btn-main:hover { background-color: #21867a; }
-
-        #payment-section { display: none; text-align: center; }
-
+        /* Malla de Planes */
+        #payment-section { display: none; }
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -127,24 +123,25 @@
             background: white;
             padding: 2rem;
             border-radius: 15px;
-            border: 2px solid #eee;
-            transition: 0.3s;
+            border: 1px solid #e1e8ed;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: 0.3s;
         }
 
-        .plan-card:hover { border-color: var(--primary); }
+        .plan-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .price { font-size: 1.8rem; font-weight: bold; margin: 1rem 0; color: var(--secondary); }
         
         .btn-pay {
-            display: block;
             background-color: #009ee3;
             color: white;
             text-decoration: none;
             padding: 0.8rem;
             border-radius: 8px;
             font-weight: bold;
+            display: block;
         }
 
         .whatsapp-float {
@@ -153,49 +150,44 @@
             right: 20px;
             background-color: #25d366;
             color: white;
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 100;
         }
 
         @media (max-width: 600px) {
-            .services-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Atención Domiciliaria de Fisioterapia</h1>
-    <p>Especialistas en recuperación integral en la comodidad de tu hogar</p>
+    <h1>Fisioterapia en Casa</h1>
+    <p>Recuperación integral con estándares clínicos de alta calidad</p>
 </header>
 
 <div class="container">
     
-    <h2>Nuestras Especialidades</h2>
     <div class="services-grid">
         <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500" alt="Neurológico">
+            <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=500" alt="Neurológico">
             <h3>Paciente Neurológico</h3>
-            <p>Rehabilitación para ACV, Parkinson y lesiones medulares.</p>
         </div>
         <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?auto=format&fit=crop&w=500" alt="Ortopédico">
-            <h3>Lesiones y Cirugías Ortopédicas</h3>
-            <p>Post-operatorios, fracturas, prótesis y dolores articulares.</p>
+            <img src="https://images.unsplash.com/photo-1579154235820-ac126620ceec?auto=format&fit=crop&w=500" alt="Ortopédico">
+            <h3>Lesiones Ortopédicas</h3>
         </div>
         <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=500" alt="Cardiovascular">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=500" alt="Cardiovascular">
             <h3>Paciente Cardiovascular</h3>
-            <p>Fortalecimiento y recuperación de la capacidad pulmonar y cardíaca.</p>
         </div>
         <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500" alt="Acondicionamiento">
-            <h3>Acondicionamiento Físico</h3>
-            <p>Mejora de la movilidad, fuerza y vitalidad para el día a día.</p>
+            <img src="https://images.unsplash.com/photo-1581594632752-42711d467921?auto=format&fit=crop&w=500" alt="Adulto Mayor">
+            <h3>Movilidad Adulto Mayor</h3>
         </div>
     </div>
 
@@ -207,21 +199,30 @@
                 <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
             </div>
             <div class="form-group">
-                <label>Dirección de Atención</label>
-                <input type="text" id="direccion" placeholder="Ej: Calle 10 #45-20" required>
+                <label>Dirección de Residencia</label>
+                <input type="text" id="direccion" placeholder="Calle, Número y Barrio" required>
             </div>
             <div class="form-group">
-                <label>Teléfono WhatsApp</label>
+                <label>WhatsApp de Contacto</label>
                 <input type="tel" id="telefono" placeholder="Ej: 3054513754" required>
             </div>
-            <button type="submit" class="btn-main">Registrar y Ver Planes</button>
+            <button type="submit" class="btn-main">Ver Planes de Pago</button>
         </form>
     </div>
 
-    <div id="payment-section">
-        <h2>2. Selecciona tu Plan de Fisioterapia</h2>
-        <p>Hola <strong id="display-name"></strong>, selecciona el paquete ideal para tu tratamiento:</p>
+    <div id="payment-section" class="card">
+        <h2>Selecciona tu Plan de Fisioterapia</h2>
+        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige la opción que necesitas:</p>
         <div class="plans-grid">
+            <div class="plan-card">
+                <div>
+                    <h3>Plan Individual</h3>
+                    <p>Evaluación Inicial + 1 Cita de Control</p>
+                    <div class="price">$240.000</div>
+                </div>
+                <a href="https://mpago.li/2ickAi2" target="_blank" class="btn-pay">Pagar ahora</a>
+            </div>
+
             <div class="plan-card">
                 <div>
                     <h3>Plan Básico</h3>
@@ -231,7 +232,7 @@
                 <a href="https://mpago.li/1bw9nKf" target="_blank" class="btn-pay">Pagar ahora</a>
             </div>
 
-            <div class="plan-card" style="border: 2px solid var(--primary);">
+            <div class="plan-card" style="border: 2px solid var(--primary); transform: scale(1.05);">
                 <div>
                     <small style="color: var(--primary); font-weight: bold;">MÁS SOLICITADO</small>
                     <h3>Plan Plus</h3>
@@ -254,7 +255,7 @@
 </div>
 
 <a href="https://wa.me/573054513754" class="whatsapp-float" target="_blank">
-    💬 Chatear con Fisioterapeuta
+    💬 Chatear con Especialista
 </a>
 
 <script>
@@ -264,7 +265,7 @@
         document.getElementById('display-name').innerText = nombre;
         document.getElementById('registration-card').style.display = 'none';
         document.getElementById('payment-section').style.display = 'block';
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 300);
     });
 </script>
 
