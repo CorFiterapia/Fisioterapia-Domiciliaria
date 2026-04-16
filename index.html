@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CorFiterapia - Agenda y Pago</title>
+    <title>Fisioterapia - Agenda y Pago</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -25,46 +25,39 @@
         }
 
         .container { max-width: 900px; margin: -2rem auto 3rem; padding: 0 1rem; }
-
         .card { background: var(--white); padding: 2rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 2rem; border-top: 5px solid var(--primary); }
 
-        /* Pasos */
         .step-header { display: flex; justify-content: space-between; margin-bottom: 2rem; position: relative; }
         .step-header::before { content: ""; position: absolute; top: 20px; left: 0; width: 100%; height: 2px; background: #ddd; z-index: 1; }
-        .step-dot { width: 40px; height: 40px; background: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; font-weight: bold; color: white; transition: 0.3s; }
+        .step-dot { width: 40px; height: 40px; background: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; font-weight: bold; color: white; }
         .step-dot.active { background: var(--primary); transform: scale(1.1); }
 
         h2 { color: var(--secondary); text-align: center; font-size: 1.5rem; }
-
         .form-group { margin-bottom: 1.2rem; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #444; }
         input, select { width: 100%; padding: 0.8rem; border: 2px solid #e1e8ed; border-radius: 10px; font-family: inherit; font-size: 1rem; box-sizing: border-box; }
 
         .btn-next { background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 10px; width: 100%; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
-        .btn-next:hover { background: var(--secondary); }
-
-        /* Secciones ocultas inicialmente */
+        
         #step-2, #step-3 { display: none; }
 
-        /* Grilla de planes */
         .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .plan-card { border: 1px solid #eee; border-radius: 15px; padding: 1.5rem; text-align: center; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .plan-card:hover { border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .plan-card { border: 1px solid #eee; border-radius: 15px; padding: 1.5rem; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
         .price { font-size: 1.5rem; font-weight: bold; color: var(--secondary); margin: 10px 0; }
         
         .btn-pay { background: #009ee3; color: white; text-decoration: none; padding: 0.8rem; border-radius: 8px; font-weight: bold; display: block; border: none; width: 100%; cursor: pointer; }
         
-        .bono-tag { background: var(--discount); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
-        .input-bono { border: 2px dashed var(--discount); text-align: center; margin-top: 10px; font-weight: bold; color: var(--discount); }
+        .input-bono { border: 2px dashed #ccc; text-align: center; margin-top: 10px; font-weight: bold; color: var(--secondary); transition: 0.3s; }
+        .input-bono:focus { border-color: var(--discount); outline: none; }
 
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
 <header>
     <h1>CorFiterapia</h1>
-    <p>Rehabilitación a domicilio</p>
+    <p>Agenda tu rehabilitación profesional</p>
 </header>
 
 <div class="container">
@@ -76,56 +69,54 @@
         </div>
 
         <div id="step-1">
-            <h2>1. Tus Datos</h2>
+            <h2>1. Información del Paciente</h2>
             <div class="form-group">
-                <label>Nombre del Paciente</label>
+                <label>Nombre Completo</label>
                 <input type="text" id="nombre" placeholder="Nombre completo" required>
             </div>
             <div class="form-group">
-                <label>Dirección y Barrio</label>
-                <input type="text" id="direccion" placeholder="Ej: Calle 10 #20-30, B/ El Recreo" required>
+                <label>Dirección de Residencia</label>
+                <input type="text" id="direccion" placeholder="Calle, número y barrio" required>
             </div>
-            <button class="btn-next" onclick="goToStep(2)">Siguiente: Agendar Fecha</button>
+            <button class="btn-next" onclick="goToStep(2)">Siguiente: Fecha y Hora</button>
         </div>
 
         <div id="step-2">
-            <h2>2. ¿Cuándo necesitas la cita?</h2>
+            <h2>2. ¿Para cuándo deseas la cita?</h2>
             <div class="form-group">
-                <label>Selecciona el día</label>
+                <label>Día de la sesión</label>
                 <input type="date" id="fecha" required>
             </div>
             <div class="form-group">
-                <label>Jornada de preferencia</label>
+                <label>Jornada preferencial</label>
                 <select id="jornada">
-                    <option value="Mañana (8am - 12pm)">Mañana (8:00 AM - 12:00 PM)</option>
-                    <option value="Tarde (2pm - 6pm)">Tarde (2:00 PM - 6:00 PM)</option>
+                    <option value="Mañana (8:00 AM - 12:00 PM)">Mañana (8:00 AM - 12:00 PM)</option>
+                    <option value="Tarde (2:00 PM - 6:00 PM)">Tarde (2:00 PM - 6:00 PM)</option>
                 </select>
             </div>
-            <p style="font-size: 0.8rem; color: #666; text-align: center;">* Sujeto a disponibilidad. Confirmaremos al finalizar.</p>
-            <button class="btn-next" onclick="goToStep(3)">Siguiente: Ver Planes y Pago</button>
+            <button class="btn-next" onclick="goToStep(3)">Siguiente: Selección de Plan</button>
         </div>
 
         <div id="step-3">
             <h2>3. Elige tu Plan de Pago</h2>
-            <p style="text-align: center; font-size: 0.9rem;">Hola <strong id="user-name"></strong>, estos son los planes para tu cita del <strong id="resumen-fecha"></strong>:</p>
+            <p style="text-align: center; font-size: 0.9rem;">Hola <strong id="user-name"></strong>, cita para el día <strong id="resumen-fecha"></strong>:</p>
             
             <div class="plans-grid">
-                <div class="plan-card" style="border: 2px solid var(--discount);">
+                <div class="plan-card" style="border: 2px solid #ddd;">
                     <div>
-                        <span class="bono-tag">Oferta Especial</span>
-                        <h3>Plan con Bono</h3>
+                        <h3>Sesiones Individuales</h3>
                         <label style="font-size: 0.7rem;">Número de sesiones:</label>
-                        <input type="number" id="sesionesBono" value="1" min="1" max="20" style="padding: 5px; margin-bottom: 5px;">
-                        <input type="text" id="codigoBono" placeholder="CÓDIGO BONO40%" class="input-bono">
+                        <input type="number" id="sesionesBono" value="1" min="1" max="25" style="padding: 5px; margin-bottom: 5px;">
+                        <input type="text" id="codigoBono" placeholder="Código promocional" class="input-bono">
                         <div class="price" id="totalBono">$100.000</div>
                     </div>
-                    <button onclick="enviarWhatsApp('Bono Especial')" class="btn-pay" style="background: var(--discount);">Redimir y Pagar</button>
+                    <button onclick="enviarWhatsApp('Plan por Sesión')" class="btn-pay" style="background: var(--secondary);">Confirmar</button>
                 </div>
 
                 <div class="plan-card">
                     <div>
                         <h3>Plan Básico</h3>
-                        <p style="font-size: 0.8rem;">Valoración + 5 Sesiones</p>
+                        <p style="font-size: 0.8rem;">Evaluación + 5 Sesiones</p>
                         <div class="price">$450.000</div>
                     </div>
                     <button onclick="enviarWhatsApp('Plan Básico ($450.000)')" class="btn-pay">Seleccionar</button>
@@ -133,9 +124,9 @@
 
                 <div class="plan-card" style="border: 2px solid var(--primary);">
                     <div>
-                        <span class="bono-tag" style="background: var(--primary);">Más Vendido</span>
+                        <small style="color: var(--primary); font-weight: bold;">OPCIÓN RECOMENDADA</small>
                         <h3>Plan Plus</h3>
-                        <p style="font-size: 0.8rem;">Valoración + 10 Sesiones</p>
+                        <p style="font-size: 0.8rem;">Evaluación + 10 Sesiones</p>
                         <div class="price">$800.000</div>
                     </div>
                     <button onclick="enviarWhatsApp('Plan Plus ($800.000)')" class="btn-pay">Seleccionar</button>
@@ -145,24 +136,13 @@
     </div>
 </div>
 
-<a href="https://wa.me/573054513754" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i> ¿Necesitas ayuda?
-</a>
-
 <script>
-    // Navegación de pasos
     function goToStep(step) {
-        if (step === 2) {
-            if (!document.getElementById('nombre').value || !document.getElementById('direccion').value) {
-                alert("Por favor llena tus datos"); return;
-            }
+        if (step === 2 && (!document.getElementById('nombre').value || !document.getElementById('direccion').value)) {
+            alert("Por favor completa tus datos"); return;
         }
-        if (step === 3) {
-            if (!document.getElementById('fecha').value) {
-                alert("Por favor selecciona una fecha"); return;
-            }
-            document.getElementById('user-name').innerText = document.getElementById('nombre').value;
-            document.getElementById('resumen-fecha').innerText = document.getElementById('fecha').value;
+        if (step === 3 && !document.getElementById('fecha').value) {
+            alert("Por favor selecciona una fecha"); return;
         }
 
         document.getElementById('step-1').style.display = 'none';
@@ -172,49 +152,59 @@
         
         document.querySelectorAll('.step-dot').forEach(dot => dot.classList.remove('active'));
         document.getElementById('dot-' + step).classList.add('active');
+
+        if(step === 3) {
+            document.getElementById('user-name').innerText = document.getElementById('nombre').value;
+            document.getElementById('resumen-fecha').innerText = document.getElementById('fecha').value;
+        }
     }
 
-    // Lógica de cálculo de Bono
     const sInput = document.getElementById('sesionesBono');
     const cInput = document.getElementById('codigoBono');
     const tDisplay = document.getElementById('totalBono');
 
     function calcular() {
+        // La persona debe saber que el código es BONO40%
         let precioUnidad = (cInput.value.toUpperCase() === 'BONO40%') ? 60000 : 100000;
         let total = sInput.value * precioUnidad;
         tDisplay.innerText = '$' + total.toLocaleString('es-CO');
+        
+        // Cambio visual discreto si el código es correcto
+        if(cInput.value.toUpperCase() === 'BONO40%') {
+            cInput.style.borderColor = "var(--success)";
+        } else {
+            cInput.style.borderColor = "#ccc";
+        }
     }
     sInput.addEventListener('input', calcular);
     cInput.addEventListener('input', calcular);
 
-    // Envío a WhatsApp
     function enviarWhatsApp(planSeleccionado) {
         const nombre = document.getElementById('nombre').value;
         const dir = document.getElementById('direccion').value;
         const fecha = document.getElementById('fecha').value;
         const jornada = document.getElementById('jornada').value;
         
-        let detallePlan = planSeleccionado;
-        let precioFinal = "";
+        let detalle = planSeleccionado;
+        let pago = "";
 
-        if (planSeleccionado === 'Bono Especial') {
-            detallePlan = `Bono Especial (${sInput.value} sesiones) con código: ${cInput.value}`;
-            precioFinal = tDisplay.innerText;
+        if (planSeleccionado === 'Plan por Sesión') {
+            detalle = `Plan Individual (${sInput.value} sesiones)`;
+            if(cInput.value.toUpperCase() === 'BONO40%') detalle += " - Aplicó Código Promocional";
+            pago = tDisplay.innerText;
         }
 
-        const mensaje = `¡Hola CorFiterapia! Acabo de agendar una cita en la web:
-        
+        const texto = `Hola CorFiterapia, he agendado una cita:
 👤 Paciente: ${nombre}
 📍 Dirección: ${dir}
-📅 Fecha deseada: ${fecha}
+📅 Fecha: ${fecha}
 ⏰ Jornada: ${jornada}
-💳 Plan: ${detallePlan}
-💰 Total estimado: ${precioFinal}
+💳 Plan: ${detalle}
+💰 Total estimado: ${pago}
 
-¿Tienen disponibilidad para confirmar el pago?`;
+¿Me confirman disponibilidad para proceder?`;
 
-        const url = `https://wa.me/573054513754?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, '_blank');
+        window.open(`https://wa.me/573054513754?text=${encodeURIComponent(texto)}`, '_blank');
     }
 </script>
 
