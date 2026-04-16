@@ -13,6 +13,7 @@
             --success: #2a9d8f;
             --light-bg: #f0f4f8;
             --white: #ffffff;
+            --discount: #e63946;
         }
 
         body {
@@ -23,7 +24,6 @@
             line-height: 1.6;
         }
 
-        /* Banner actualizado con la imagen de terapias */
         header {
             background: linear-gradient(rgba(30, 58, 138, 0.6), rgba(30, 58, 138, 0.6)), 
                         url('https://api.clp.google.com/v1/content/public/6618037145894912/image_7b5166.jpg');
@@ -39,7 +39,7 @@
         header p { font-size: 1.3rem; opacity: 0.95; font-weight: 400; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: -4rem auto 3rem;
             padding: 0 1rem;
             position: relative;
@@ -130,23 +130,24 @@
         
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .plan-card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             border: 1px solid #e1e8ed;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: 0.3s;
         }
 
-        .price { font-size: 1.8rem; font-weight: bold; margin: 1rem 0; color: var(--secondary); }
+        .price { font-size: 1.6rem; font-weight: bold; margin: 0.5rem 0; color: var(--secondary); }
         
         .btn-pay {
             background-color: #009ee3;
@@ -156,6 +157,17 @@
             border-radius: 8px;
             font-weight: bold;
             display: block;
+            margin-top: 10px;
+        }
+
+        /* Estilo para el Bono Especial */
+        .bono-input {
+            border: 2px dashed var(--discount);
+            margin-top: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--discount);
         }
 
         .whatsapp-float {
@@ -176,11 +188,10 @@
             transition: 0.3s;
         }
 
-        .whatsapp-float:hover { transform: scale(1.05); background-color: #128c7e; }
-
         @media (max-width: 600px) {
             header h1 { font-size: 1.8rem; }
             header { padding: 4rem 1rem; }
+            .plans-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -223,43 +234,59 @@
 
     <div id="payment-section" class="card">
         <h2>Selecciona tu Plan de Fisioterapia</h2>
-        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige el plan ideal para iniciar tu tratamiento:</p>
+        <p style="text-align:center">Hola <strong id="display-name"></strong>, elige el plan ideal:</p>
+        
         <div class="plans-grid">
+            <div class="plan-card" style="border: 2px solid var(--discount); background: #fff5f5;">
+                <div>
+                    <h3 style="color: var(--discount);">PAGO CON BONO</h3>
+                    <p style="font-size: 0.8rem;">Aplica descuento del 40%</p>
+                    
+                    <label style="font-size: 0.7rem;">Sesiones:</label>
+                    <input type="number" id="numSesiones" value="1" min="1" max="30" style="padding: 5px; margin-bottom: 10px;">
+                    
+                    <input type="text" id="cuponBono" placeholder="Escribe BONO40%" class="bono-input">
+                    
+                    <div class="price" id="precioBono">$100.000</div>
+                </div>
+                <button onclick="irAWhaBono()" class="btn-pay" style="background-color: var(--discount); border:none; cursor:pointer; width:100%;">Redimir Bono</button>
+            </div>
+
             <div class="plan-card">
                 <div>
-                    <h3>Plan Individual</h3>
-                    <p>Evaluación Inicial 140.000$ + una Cita de Control 100.000$ </p>
+                    <h3>Individual</h3>
+                    <p>Evaluación + 1 Control</p>
                     <div class="price">$240.000</div>
                 </div>
-                <a href="https://mpago.li/2ickAi2" target="_blank" class="btn-pay">Pagar ahora</a>
+                <a href="https://mpago.li/2ickAi2" target="_blank" class="btn-pay">Pagar</a>
             </div>
 
             <div class="plan-card">
                 <div>
-                    <h3>Plan Básico</h3>
-                    <p>Evaluación + 5 Citas de Control</p>
+                    <h3>Básico</h3>
+                    <p>Evaluación + 5 Controles</p>
                     <div class="price">$450.000</div>
                 </div>
-                <a href="https://mpago.li/1bw9nKf" target="_blank" class="btn-pay">Pagar ahora</a>
+                <a href="https://mpago.li/1bw9nKf" target="_blank" class="btn-pay">Pagar</a>
             </div>
 
-            <div class="plan-card" style="border: 2px solid var(--primary); transform: scale(1.05);">
+            <div class="plan-card" style="border: 2px solid var(--primary);">
                 <div>
-                    <small style="color: var(--primary); font-weight: bold;">MÁS SOLICITADO</small>
-                    <h3>Plan Plus</h3>
-                    <p>Evaluación + 10 Citas de Control</p>
+                    <small style="color: var(--primary); font-weight: bold;">POPULAR</small>
+                    <h3>Plus</h3>
+                    <p>Evaluación + 10 Controles</p>
                     <div class="price">$800.000</div>
                 </div>
-                <a href="https://mpago.li/12hvNys" target="_blank" class="btn-pay">Pagar ahora</a>
+                <a href="https://mpago.li/12hvNys" target="_blank" class="btn-pay">Pagar</a>
             </div>
 
             <div class="plan-card">
                 <div>
-                    <h3>Plan Premium</h3>
-                    <p>Evaluación + 20 Citas de Control</p>
+                    <h3>Premium</h3>
+                    <p>Evaluación + 20 Controles</p>
                     <div class="price">$1.400.000</div>
                 </div>
-                <a href="https://mpago.li/2WJ3W1Z" target="_blank" class="btn-pay">Pagar ahora</a>
+                <a href="https://mpago.li/2WJ3W1Z" target="_blank" class="btn-pay">Pagar</a>
             </div>
         </div>
     </div>
@@ -271,6 +298,7 @@
 </a>
 
 <script>
+    // Registro inicial
     document.getElementById('appointment-form').addEventListener('submit', function(e) {
         e.preventDefault();
         const nombre = document.getElementById('nombre').value;
@@ -279,6 +307,40 @@
         document.getElementById('payment-section').style.display = 'block';
         window.scrollTo(0, 400);
     });
+
+    // Lógica del Bono y Sesiones
+    const inputSesiones = document.getElementById('numSesiones');
+    const inputCupon = document.getElementById('cuponBono');
+    const displayPrecio = document.getElementById('precioBono');
+
+    function actualizarPrecio() {
+        let valorSesion = 100000;
+        if (inputCupon.value.toUpperCase() === 'BONO40%') {
+            valorSesion = 60000;
+        }
+        let total = inputSesiones.value * valorSesion;
+        displayPrecio.innerText = '$' + total.toLocaleString('es-CO');
+    }
+
+    inputSesiones.addEventListener('input', actualizarPrecio);
+    inputCupon.addEventListener('input', actualizarPrecio);
+
+    function irAWhaBono() {
+        const nombre = document.getElementById('nombre').value;
+        const sesiones = inputSesiones.value;
+        const total = displayPrecio.innerText;
+        const cupon = inputCupon.value.toUpperCase();
+        let mensaje = "";
+
+        if(cupon === 'BONO40%') {
+            mensaje = `Hola CorFiterapia! Soy ${nombre}. Quiero aplicar el BONO40% para ${sesiones} sesiones de fisioterapia. Total con descuento: ${total}.`;
+        } else {
+            mensaje = `Hola CorFiterapia! Soy ${nombre}. Quiero agendar ${sesiones} sesiones de fisioterapia por un total de ${total}.`;
+        }
+        
+        const url = `https://wa.me/573054513754?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, '_blank');
+    }
 </script>
 
 </body>
