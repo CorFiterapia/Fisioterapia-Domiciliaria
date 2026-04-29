@@ -164,11 +164,11 @@
     const tDisplay = document.getElementById('totalBono');
 
     function calcular() {
-        let precioUnidad = (cInput.value.toUpperCase() === 'BONO40%') ? 60000 : 100000;
+        let precioUnidad = (cInput.value.toUpperCase() === 'BONO40') ? 60000 : 100000;
         let total = sInput.value * precioUnidad;
         tDisplay.innerText = '$' + total.toLocaleString('es-CO');
         
-        if(cInput.value.toUpperCase() === 'BONO40%') {
+        if(cInput.value.toUpperCase() === 'BONO40') {
             cInput.style.borderColor = "var(--success)";
         } else {
             cInput.style.borderColor = "#ccc";
@@ -188,7 +188,7 @@
 
         if (planSeleccionado === 'Plan por Sesión') {
             detalle = `Plan Individual (${sInput.value} sesiones)`;
-            if(cInput.value.toUpperCase() === 'BONO40%') detalle += " - Aplicó Código Promocional";
+            if(cInput.value.toUpperCase() === 'BONO40') detalle += " - Aplicó Código Promocional";
             pago = tDisplay.innerText;
         }
 
